@@ -6,17 +6,29 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "generate-db-context": "ts-node scripts/generate-db-context.ts"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@supabase/supabase-js": "^2.48.1",
+    "@types/react": "~18.3.12",
+    "@types/react-native": "^0.72.8",
     "expo": "~52.0.27",
+    "expo-screen-orientation": "^8.0.4",
+    "expo-secure-store": "~14.0.1",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
-    "react-native": "0.76.6"
+    "react-native": "0.76.6",
+    "react-native-url-polyfill": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/node": "^22.10.10",
     "@types/react": "~18.3.12",
+    "dotenv": "^16.4.7",
+    "supabase": "^2.6.8",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "private": true

@@ -1,0 +1,1302 @@
+{
+  "tables": [
+    {
+      "name": "alerts",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "rule_id",
+          "type": "uuid",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "sensor_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "trigger_value",
+          "type": "numeric",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "triggered_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "resolved_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "status",
+          "type": "character varying",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "notification_sent",
+          "type": "boolean",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "groups",
+      "columns": [
+        {
+          "name": "id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "measurement_units",
+      "columns": [
+        {
+          "name": "id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "symbol",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "profile_stations",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "profile_id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_role",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "nullable": false,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "profiles",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "readings",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "sensor_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "value",
+          "type": "numeric",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "timestamp",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "sensor_types",
+      "columns": [
+        {
+          "name": "id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "requires_calibration",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "recommended_calibration_interval",
+          "type": "integer",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "sensors",
+      "columns": [
+        {
+          "name": "id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "sensor_type_id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "unit_id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "last_calibration_date",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "group_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "stations",
+      "columns": [
+        {
+          "name": "id",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "subscription_codes",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "code",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "station_role",
+          "type": "text",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_by",
+          "type": "uuid",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "used_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "used_by",
+          "type": "uuid",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "threshold_rules",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "isPrimaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "character varying",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "sensor_id",
+          "type": "text",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "condition_operator",
+          "type": "character varying",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "threshold_value",
+          "type": "numeric",
+          "nullable": false,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "time_window_seconds",
+          "type": "integer",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "nullable": true,
+          "isPrimaryKey": false
+        }
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "name": "Profiles select policy",
+      "table": "profiles",
+      "action": "SELECT",
+      "definition": "true",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "true",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Profiles insert policy",
+      "table": "profiles",
+      "action": "INSERT",
+      "definition": null,
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "a",
+      "conditions": {
+        "qual": null,
+        "with_check": "(id = auth.uid())"
+      }
+    },
+    {
+      "name": "Profiles update policy",
+      "table": "profiles",
+      "action": "UPDATE",
+      "definition": "((id = auth.uid()) OR (( SELECT profiles_1.role\n   FROM profiles profiles_1\n  WHERE (profiles_1.id = auth.uid())) = 'superadmin'::text))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "w",
+      "conditions": {
+        "qual": "((id = auth.uid()) OR (( SELECT profiles_1.role\n   FROM profiles profiles_1\n  WHERE (profiles_1.id = auth.uid())) = 'superadmin'::text))",
+        "with_check": "((id = auth.uid()) OR (( SELECT profiles_1.role\n   FROM profiles profiles_1\n  WHERE (profiles_1.id = auth.uid())) = 'superadmin'::text))"
+      }
+    },
+    {
+      "name": "Profiles delete policy",
+      "table": "profiles",
+      "action": "DELETE",
+      "definition": "(( SELECT profiles_1.role\n   FROM profiles profiles_1\n  WHERE (profiles_1.id = auth.uid())) = 'superadmin'::text)",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "d",
+      "conditions": {
+        "qual": "(( SELECT profiles_1.role\n   FROM profiles profiles_1\n  WHERE (profiles_1.id = auth.uid())) = 'superadmin'::text)",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Profile stations select policy",
+      "table": "profile_stations",
+      "action": "SELECT",
+      "definition": "((profile_id = auth.uid()) OR (( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "((profile_id = auth.uid()) OR (( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Profile stations insert policy",
+      "table": "profile_stations",
+      "action": "INSERT",
+      "definition": null,
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "a",
+      "conditions": {
+        "qual": null,
+        "with_check": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)"
+      }
+    },
+    {
+      "name": "Profile stations update policy",
+      "table": "profile_stations",
+      "action": "UPDATE",
+      "definition": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "w",
+      "conditions": {
+        "qual": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)",
+        "with_check": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)"
+      }
+    },
+    {
+      "name": "Profile stations delete policy",
+      "table": "profile_stations",
+      "action": "DELETE",
+      "definition": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "d",
+      "conditions": {
+        "qual": "(( SELECT profiles.role\n   FROM profiles\n  WHERE (profiles.id = auth.uid())) = 'superadmin'::text)",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Stations base access",
+      "table": "stations",
+      "action": "ALL",
+      "definition": "((EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = stations.id)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = stations.id)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Groups select policy",
+      "table": "groups",
+      "action": "SELECT",
+      "definition": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true)))))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Groups insert policy",
+      "table": "groups",
+      "action": "INSERT",
+      "definition": null,
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "a",
+      "conditions": {
+        "qual": null,
+        "with_check": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))))"
+      }
+    },
+    {
+      "name": "Groups update policy",
+      "table": "groups",
+      "action": "UPDATE",
+      "definition": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "w",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))))",
+        "with_check": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))))"
+      }
+    },
+    {
+      "name": "Groups delete policy",
+      "table": "groups",
+      "action": "DELETE",
+      "definition": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = 'admin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "d",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = groups.station_id) AND (profile_stations.is_active = true) AND (profile_stations.station_role = 'admin'::text)))))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Readings base access",
+      "table": "readings",
+      "action": "ALL",
+      "definition": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = readings.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = readings.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Stations insert policy",
+      "table": "stations",
+      "action": "INSERT",
+      "definition": null,
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "a",
+      "conditions": {
+        "qual": null,
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Sensor types base access",
+      "table": "sensor_types",
+      "action": "ALL",
+      "definition": "true",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "true",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Measurement units base access",
+      "table": "measurement_units",
+      "action": "ALL",
+      "definition": "true",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "true",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Threshold rules base access",
+      "table": "threshold_rules",
+      "action": "ALL",
+      "definition": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = threshold_rules.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = threshold_rules.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Alerts base access",
+      "table": "alerts",
+      "action": "ALL",
+      "definition": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = alerts.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "*",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM ((sensors s\n     JOIN groups g ON ((g.id = s.group_id)))\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((s.id = alerts.sensor_id) AND (ps.profile_id = auth.uid())))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Stations select policy",
+      "table": "stations",
+      "action": "SELECT",
+      "definition": "true",
+      "schema": "public",
+      "roles": [
+        "0"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "true",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Stations update policy",
+      "table": "stations",
+      "action": "UPDATE",
+      "definition": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "w",
+      "conditions": {
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))",
+        "with_check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))"
+      }
+    },
+    {
+      "name": "Stations delete policy",
+      "table": "stations",
+      "action": "DELETE",
+      "definition": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "d",
+      "conditions": {
+        "qual": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text))))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Subscription codes viewable by superadmin and station admins",
+      "table": "subscription_codes",
+      "action": "SELECT",
+      "definition": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = subscription_codes.station_id) AND (profile_stations.station_role = 'admin'::text) AND (profile_stations.is_active = true)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profile_stations\n  WHERE ((profile_stations.profile_id = auth.uid()) AND (profile_stations.station_id = subscription_codes.station_id) AND (profile_stations.station_role = 'admin'::text) AND (profile_stations.is_active = true)))))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Sensors select policy",
+      "table": "sensors",
+      "action": "SELECT",
+      "definition": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "r",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": null
+      }
+    },
+    {
+      "name": "Sensors insert policy",
+      "table": "sensors",
+      "action": "INSERT",
+      "definition": null,
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "a",
+      "conditions": {
+        "qual": null,
+        "with_check": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))"
+      }
+    },
+    {
+      "name": "Sensors update policy",
+      "table": "sensors",
+      "action": "UPDATE",
+      "definition": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "w",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = ANY (ARRAY['admin'::text, 'operator'::text]))))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))"
+      }
+    },
+    {
+      "name": "Sensors delete policy",
+      "table": "sensors",
+      "action": "DELETE",
+      "definition": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = 'admin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+      "schema": "public",
+      "roles": [
+        "16479"
+      ],
+      "command": "d",
+      "conditions": {
+        "qual": "((EXISTS ( SELECT 1\n   FROM (groups g\n     JOIN profile_stations ps ON ((ps.station_id = g.station_id)))\n  WHERE ((g.id = sensors.group_id) AND (ps.profile_id = auth.uid()) AND (ps.is_active = true) AND (ps.station_role = 'admin'::text)))) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'superadmin'::text)))))",
+        "with_check": null
+      }
+    }
+  ],
+  "functions": [
+    {
+      "name": "update_user_role",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.update_user_role(target_user_id uuid, new_role text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nDECLARE\n  current_user_role text;\nBEGIN\n  -- Get role of user executing the change\n  SELECT role INTO current_user_role\n  FROM profiles\n  WHERE id = auth.uid();\n\n  IF current_user_role != 'superadmin' THEN\n    RAISE EXCEPTION 'Only superadministrators can change user roles';\n  END IF;\n\n  IF target_user_id = auth.uid() THEN\n    RAISE EXCEPTION 'Users cannot change their own role';\n  END IF;\n\n  -- Update the role\n  UPDATE profiles\n     SET role = new_role,\n         updated_at = now()\n   WHERE id = target_user_id;\n\n  RETURN true;\nEND;\n$function$\n"
+    },
+    {
+      "name": "update_updated_at_column",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.update_updated_at_column()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  NEW.updated_at = now();\n  RETURN NEW;\nEND;\n$function$\n"
+    },
+    {
+      "name": "handle_new_user",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  INSERT INTO public.profiles (id, email, role)\n  VALUES (NEW.id, NEW.email, 'user');\n  RETURN NEW;\nEND;\n$function$\n"
+    },
+    {
+      "name": "check_sensor_rules",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.check_sensor_rules()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nDECLARE\n  rule RECORD;\n  reading RECORD;\n  window_start timestamptz;\n  window_readings int;\n  condition_met boolean;\nBEGIN\n  FOR rule IN \n    SELECT * FROM threshold_rules WHERE active = true\n  LOOP\n    SELECT * FROM readings \n      WHERE sensor_id = rule.sensor_id \n      ORDER BY timestamp DESC \n      LIMIT 1 \n      INTO reading;\n\n    IF reading IS NOT NULL THEN\n      -- Verificar si no existe alerta abierta o en estado ACKNOWLEDGED\n      IF NOT EXISTS (\n        SELECT 1 FROM alerts \n        WHERE rule_id = rule.id \n          AND status IN ('OPEN', 'ACKNOWLEDGED')\n      ) THEN\n        condition_met := false;\n\n        IF rule.time_window_seconds IS NOT NULL \n           AND rule.time_window_seconds > 0 THEN\n          window_start := now() \n                         - (rule.time_window_seconds || ' seconds')::interval;\n          \n          SELECT COUNT(*) INTO window_readings\n          FROM readings\n          WHERE sensor_id = rule.sensor_id\n            AND timestamp >= window_start\n            AND CASE rule.condition_operator\n                  WHEN '>'  THEN value >  rule.threshold_value\n                  WHEN '>=' THEN value >= rule.threshold_value\n                  WHEN '<'  THEN value <  rule.threshold_value\n                  WHEN '<=' THEN value <= rule.threshold_value\n                  WHEN '='  THEN value =  rule.threshold_value\n                END;\n\n          -- Si *todas* las lecturas en la ventana cumplen la condición:\n          SELECT COUNT(*) = window_readings INTO condition_met\n          FROM readings\n          WHERE sensor_id = rule.sensor_id\n            AND timestamp >= window_start;\n        ELSE\n          condition_met := CASE rule.condition_operator\n                             WHEN '>'  THEN reading.value >  rule.threshold_value\n                             WHEN '>=' THEN reading.value >= rule.threshold_value\n                             WHEN '<'  THEN reading.value <  rule.threshold_value\n                             WHEN '<=' THEN reading.value <= rule.threshold_value\n                             WHEN '='  THEN reading.value =  rule.threshold_value\n                           END;\n        END IF;\n\n        IF condition_met THEN\n          INSERT INTO alerts (\n            rule_id,\n            sensor_id,\n            trigger_value,\n            status,\n            notification_sent\n          ) \n          VALUES (\n            rule.id,\n            rule.sensor_id,\n            reading.value,\n            'OPEN',\n            false\n          );\n        END IF;\n      END IF;\n    END IF;\n  END LOOP;\nEND;\n$function$\n"
+    },
+    {
+      "name": "process_sensor_reading",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.process_sensor_reading()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  PERFORM check_sensor_rules();\n  RETURN NEW;\nEND;\n$function$\n"
+    },
+    {
+      "name": "get_all_users_with_profiles",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_all_users_with_profiles()\n RETURNS TABLE(id uuid, email text, role text, created_at timestamp with time zone)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nBEGIN\n  RETURN QUERY\n  SELECT \n    p.id,\n    p.email,\n    p.role,\n    p.created_at\n  FROM profiles p\n  ORDER BY p.created_at DESC;\nEND;\n$function$\n"
+    },
+    {
+      "name": "check_superadmin_code_available",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.check_superadmin_code_available()\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nBEGIN\n  -- Check if there's already a used superadmin code\n  RETURN NOT EXISTS (\n    SELECT 1 \n    FROM subscription_codes \n    WHERE code = 'SUPER_2024' \n    AND used_at IS NOT NULL\n  );\nEND;\n$function$\n"
+    },
+    {
+      "name": "assign_station_membership",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.assign_station_membership(target_profile_id uuid, target_station_id text, target_station_role text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nDECLARE\n  current_user_role text;\nBEGIN\n  -- Verificar si el usuario actual es superadmin\n  SELECT role INTO current_user_role\n  FROM profiles\n  WHERE id = auth.uid();\n\n  IF current_user_role != 'superadmin' THEN\n    RAISE EXCEPTION 'Only superadministrators can assign station memberships';\n  END IF;\n\n  -- Validar rol de estación\n  IF target_station_role NOT IN ('admin', 'operator', 'viewer') THEN\n    RAISE EXCEPTION 'Invalid station role. Must be admin, operator, or viewer';\n  END IF;\n\n  -- Validar que existe el perfil\n  IF NOT EXISTS (SELECT 1 FROM profiles WHERE id = target_profile_id) THEN\n    RAISE EXCEPTION 'Target profile does not exist';\n  END IF;\n\n  -- Validar que existe la estación\n  IF NOT EXISTS (SELECT 1 FROM stations WHERE id = target_station_id) THEN\n    RAISE EXCEPTION 'Target station does not exist';\n  END IF;\n\n  -- Insertar nueva membresía, manejando duplicados\n  INSERT INTO profile_stations (\n    profile_id,\n    station_id,\n    station_role\n  )\n  VALUES (\n    target_profile_id,\n    target_station_id,\n    target_station_role\n  )\n  ON CONFLICT (profile_id, station_id) \n  DO UPDATE SET\n    station_role = EXCLUDED.station_role,\n    updated_at = now();\n\n  RETURN true;\nEND;\n$function$\n"
+    },
+    {
+      "name": "generate_subscription_code",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.generate_subscription_code(target_station_id text, target_station_role text, expiration_days integer DEFAULT 7)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nDECLARE\n  new_code text;\n  current_user_role text;\n  is_station_admin boolean;\nBEGIN\n  -- Get current user role\n  SELECT role INTO current_user_role\n  FROM profiles\n  WHERE id = auth.uid();\n  \n  -- Check if user is station admin\n  IF current_user_role != 'superadmin' THEN\n    SELECT EXISTS (\n      SELECT 1 \n      FROM profile_stations \n      WHERE profile_id = auth.uid() \n        AND station_id = target_station_id \n        AND station_role = 'admin'\n        AND is_active = true\n    ) INTO is_station_admin;\n    \n    IF NOT is_station_admin THEN\n      RAISE EXCEPTION 'Only superadmins and station admins can generate subscription codes';\n    END IF;\n  END IF;\n\n  -- Validate station\n  IF NOT EXISTS (SELECT 1 FROM stations WHERE id = target_station_id) THEN\n    RAISE EXCEPTION 'Invalid station ID';\n  END IF;\n\n  -- Validate role\n  IF target_station_role NOT IN ('admin', 'operator', 'viewer') THEN\n    RAISE EXCEPTION 'Invalid station role';\n  END IF;\n\n  -- For station admins, prevent generating admin codes\n  IF current_user_role != 'superadmin' AND target_station_role = 'admin' THEN\n    RAISE EXCEPTION 'Station admins cannot generate admin subscription codes';\n  END IF;\n\n  -- Generate unique code using md5 and random\n  new_code := upper(substr(md5(random()::text), 1, 12));\n\n  -- Insert new code\n  INSERT INTO subscription_codes (\n    code,\n    station_id,\n    station_role,\n    created_by,\n    expires_at\n  ) VALUES (\n    new_code,\n    target_station_id,\n    target_station_role,\n    auth.uid(),\n    now() + (expiration_days || ' days')::interval\n  );\n\n  RETURN new_code;\nEND;\n$function$\n"
+    },
+    {
+      "name": "delete_subscription_code",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.delete_subscription_code(target_code text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nDECLARE\n  current_user_role text;\n  code_record subscription_codes%ROWTYPE;\n  is_station_admin boolean;\nBEGIN\n  -- Get current user role\n  SELECT role INTO current_user_role\n  FROM profiles\n  WHERE id = auth.uid();\n  \n  -- Get and lock the code record\n  SELECT * INTO code_record\n  FROM subscription_codes\n  WHERE code = upper(target_code)\n  FOR UPDATE;\n\n  IF NOT FOUND THEN\n    RAISE EXCEPTION 'Code not found';\n  END IF;\n\n  -- Check permissions\n  IF current_user_role != 'superadmin' THEN\n    -- Check if user is admin of the station\n    SELECT EXISTS (\n      SELECT 1 \n      FROM profile_stations \n      WHERE profile_id = auth.uid() \n        AND station_id = code_record.station_id\n        AND station_role = 'admin'\n        AND is_active = true\n    ) INTO is_station_admin;\n    \n    IF NOT is_station_admin THEN\n      RAISE EXCEPTION 'Only superadmins and station admins can delete subscription codes';\n    END IF;\n  END IF;\n\n  -- Check if code is unused\n  IF code_record.used_at IS NOT NULL THEN\n    RAISE EXCEPTION 'Cannot delete used subscription code';\n  END IF;\n\n  -- Delete the code\n  DELETE FROM subscription_codes\n  WHERE code = upper(target_code);\n\n  RETURN true;\nEND;\n$function$\n"
+    },
+    {
+      "name": "validate_subscription_code",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.validate_subscription_code(subscription_code text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nBEGIN\n  -- Special check for SUPER_2024 code\n  IF upper(subscription_code) = 'SUPER_2024' THEN\n    -- Check if code exists and hasn't been used\n    RETURN EXISTS (\n      SELECT 1\n      FROM subscription_codes\n      WHERE code = 'SUPER_2024'\n      AND used_at IS NULL\n    );\n  END IF;\n\n  -- Regular subscription code validation\n  RETURN EXISTS (\n    SELECT 1\n    FROM subscription_codes\n    WHERE code = upper(subscription_code)\n    AND used_at IS NULL\n    AND (expires_at IS NULL OR expires_at > now())\n  );\nEND;\n$function$\n"
+    },
+    {
+      "name": "use_subscription_code",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.use_subscription_code(subscription_code text, user_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nDECLARE\n  code_record subscription_codes%ROWTYPE;\nBEGIN\n  -- Get and lock the code record\n  SELECT * INTO code_record\n  FROM subscription_codes\n  WHERE code = upper(subscription_code)\n  AND used_at IS NULL\n  AND (\n    -- For SUPER_2024, don't check expiration\n    code = 'SUPER_2024'\n    OR\n    -- For regular codes, check expiration\n    (expires_at IS NULL OR expires_at > now())\n  )\n  FOR UPDATE;\n\n  IF NOT FOUND THEN\n    RETURN false;\n  END IF;\n\n  -- Mark code as used\n  UPDATE subscription_codes\n  SET used_at = now(),\n      used_by = user_id\n  WHERE code = upper(subscription_code);\n\n  -- If this is the SUPER_2024 code, grant superadmin role\n  IF upper(subscription_code) = 'SUPER_2024' THEN\n    -- Update user role to superadmin\n    UPDATE profiles\n    SET role = 'superadmin'\n    WHERE id = user_id;\n  ELSIF code_record.station_id IS NOT NULL THEN\n    -- For regular codes, create station membership\n    INSERT INTO profile_stations (\n      profile_id,\n      station_id,\n      station_role\n    ) VALUES (\n      user_id,\n      code_record.station_id,\n      code_record.station_role\n    );\n  END IF;\n\n  RETURN true;\nEND;\n$function$\n"
+    },
+    {
+      "name": "validate_sensor_station_group",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.validate_sensor_station_group()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- If group_id is NULL, allow the change\n  IF NEW.group_id IS NULL THEN\n    RETURN NEW;\n  END IF;\n\n  -- Check if the group's station matches the sensor's station\n  IF NEW.station_id != (\n    SELECT station_id \n    FROM groups \n    WHERE id = NEW.group_id\n  ) THEN\n    RAISE EXCEPTION 'Sensor station must match group station';\n  END IF;\n\n  RETURN NEW;\nEND;\n$function$\n"
+    },
+    {
+      "name": "get_foreign_keys",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_foreign_keys()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'constraint_name', c.conname,\r\n            'table_name', c1.relname,\r\n            'column_name', a1.attname,\r\n            'foreign_table_name', c2.relname,\r\n            'foreign_column_name', a2.attname\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_constraint c\r\n    JOIN pg_class c1 ON c1.oid = c.conrelid\r\n    JOIN pg_class c2 ON c2.oid = c.confrelid\r\n    JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = c.conrelid\r\n    JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = c.confrelid\r\n    JOIN pg_namespace n ON n.oid = c1.relnamespace\r\n    WHERE c.contype = 'f'\r\n    AND n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_indexes",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_indexes()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'index_name', i.relname,\r\n            'table_name', t.relname,\r\n            'column_name', a.attname,\r\n            'is_unique', ix.indisunique\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_class t\r\n    JOIN pg_index ix ON t.oid = ix.indrelid\r\n    JOIN pg_class i ON i.oid = ix.indexrelid\r\n    JOIN pg_attribute a ON a.attrelid = t.oid\r\n    JOIN pg_namespace n ON n.oid = t.relnamespace\r\n    WHERE a.attnum = ANY(ix.indkey)\r\n    AND t.relkind = 'r'\r\n    AND n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_triggers",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_triggers()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'trigger_name', t.tgname,\r\n            'table_name', c.relname,\r\n            'trigger_type', CASE \r\n                WHEN t.tgtype & 1 = 1 THEN 'ROW'\r\n                ELSE 'STATEMENT'\r\n            END,\r\n            'trigger_timing', CASE \r\n                WHEN t.tgtype & 2 = 2 THEN 'BEFORE'\r\n                WHEN t.tgtype & 64 = 64 THEN 'INSTEAD OF'\r\n                ELSE 'AFTER'\r\n            END,\r\n            'trigger_definition', pg_get_triggerdef(t.oid)\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_trigger t\r\n    JOIN pg_class c ON t.tgrelid = c.oid\r\n    JOIN pg_namespace n ON c.relnamespace = n.oid\r\n    WHERE NOT t.tgisinternal\r\n    AND n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_extensions",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_extensions()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'name', e.extname,\r\n            'version', e.extversion,\r\n            'description', x.description\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_extension e\r\n    LEFT JOIN pg_description x ON x.objoid = e.oid;\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_functions",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_functions()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'routine_name', p.proname,\r\n            'routine_type', CASE p.prokind\r\n                WHEN 'f' THEN 'FUNCTION'\r\n                WHEN 'p' THEN 'PROCEDURE'\r\n                ELSE 'UNKNOWN'\r\n            END,\r\n            'routine_definition', pg_get_functiondef(p.oid)\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_proc p\r\n    JOIN pg_namespace n ON p.pronamespace = n.oid\r\n    WHERE n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_policies",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_policies()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'schemaname', n.nspname,\r\n            'tablename', c.relname,\r\n            'policyname', p.polname,\r\n            'roles', to_jsonb(p.polroles),\r\n            'cmd', p.polcmd,\r\n            'qual', pg_get_expr(p.polqual, p.polrelid),\r\n            'with_check', pg_get_expr(p.polwithcheck, p.polrelid),\r\n            'operation', case p.polcmd\r\n                when 'r' then 'SELECT'\r\n                when 'a' then 'INSERT'\r\n                when 'w' then 'UPDATE'\r\n                when 'd' then 'DELETE'\r\n                else 'ALL'\r\n            end,\r\n            'definition', pg_get_expr(p.polqual, p.polrelid)\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_policy p\r\n    JOIN pg_class c ON p.polrelid = c.oid\r\n    JOIN pg_namespace n ON c.relnamespace = n.oid\r\n    WHERE n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_tables",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_tables()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    WITH table_columns AS (\r\n        SELECT \r\n            c.relname as table_name,\r\n            jsonb_agg(\r\n                jsonb_build_object(\r\n                    'column_name', a.attname,\r\n                    'data_type', pg_catalog.format_type(a.atttypid, a.atttypmod),\r\n                    'is_nullable', CASE WHEN a.attnotnull THEN false ELSE true END,\r\n                    'is_primary_key', CASE WHEN pk.contype = 'p' THEN true ELSE false END\r\n                ) ORDER BY a.attnum\r\n            ) as columns\r\n        FROM pg_class c\r\n        JOIN pg_namespace n ON n.oid = c.relnamespace\r\n        LEFT JOIN pg_attribute a ON a.attrelid = c.oid\r\n        LEFT JOIN pg_constraint pk ON \r\n            pk.conrelid = c.oid AND \r\n            pk.contype = 'p' AND \r\n            a.attnum = ANY(pk.conkey)\r\n        WHERE n.nspname = 'public'\r\n        AND c.relkind = 'r'\r\n        AND a.attnum > 0\r\n        AND NOT a.attisdropped\r\n        GROUP BY c.relname\r\n    )\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'table_name', tc.table_name,\r\n            'columns', tc.columns\r\n        )\r\n    )\r\n    INTO result\r\n    FROM table_columns tc;\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    },
+    {
+      "name": "get_views",
+      "type": "FUNCTION",
+      "definition": "CREATE OR REPLACE FUNCTION public.get_views()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\ndeclare\r\n    result jsonb;\r\nbegin\r\n    SELECT jsonb_agg(\r\n        jsonb_build_object(\r\n            'view_name', c.relname,\r\n            'view_definition', pg_get_viewdef(c.oid),\r\n            'is_updatable', c.relkind = 'v'\r\n        )\r\n    )\r\n    INTO result\r\n    FROM pg_class c\r\n    JOIN pg_namespace n ON n.oid = c.relnamespace\r\n    WHERE c.relkind IN ('v', 'm')\r\n    AND n.nspname = 'public';\r\n\r\n    return coalesce(result, '[]'::jsonb);\r\nend;\r\n$function$\n"
+    }
+  ],
+  "foreignKeys": [
+    {
+      "name": "sensors_station_id_fkey",
+      "table": "sensors",
+      "column": "station_id",
+      "referencedTable": "stations",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "profiles_id_fkey",
+      "table": "profiles",
+      "column": "id",
+      "referencedTable": "users",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "groups_station_id_fkey",
+      "table": "groups",
+      "column": "station_id",
+      "referencedTable": "stations",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "sensors_sensor_type_id_fkey",
+      "table": "sensors",
+      "column": "sensor_type_id",
+      "referencedTable": "sensor_types",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "sensors_unit_id_fkey",
+      "table": "sensors",
+      "column": "unit_id",
+      "referencedTable": "measurement_units",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "sensors_group_id_fkey",
+      "table": "sensors",
+      "column": "group_id",
+      "referencedTable": "groups",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "readings_sensor_id_fkey",
+      "table": "readings",
+      "column": "sensor_id",
+      "referencedTable": "sensors",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "threshold_rules_sensor_id_fkey",
+      "table": "threshold_rules",
+      "column": "sensor_id",
+      "referencedTable": "sensors",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "alerts_rule_id_fkey",
+      "table": "alerts",
+      "column": "rule_id",
+      "referencedTable": "threshold_rules",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "alerts_sensor_id_fkey",
+      "table": "alerts",
+      "column": "sensor_id",
+      "referencedTable": "sensors",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "profile_stations_profile_id_fkey",
+      "table": "profile_stations",
+      "column": "profile_id",
+      "referencedTable": "profiles",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "profile_stations_station_id_fkey",
+      "table": "profile_stations",
+      "column": "station_id",
+      "referencedTable": "stations",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "subscription_codes_station_id_fkey",
+      "table": "subscription_codes",
+      "column": "station_id",
+      "referencedTable": "stations",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "subscription_codes_created_by_fkey",
+      "table": "subscription_codes",
+      "column": "created_by",
+      "referencedTable": "profiles",
+      "referencedColumn": "id"
+    },
+    {
+      "name": "subscription_codes_used_by_fkey",
+      "table": "subscription_codes",
+      "column": "used_by",
+      "referencedTable": "profiles",
+      "referencedColumn": "id"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "sensor_types_pkey",
+      "table": "sensor_types",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "sensors_pkey",
+      "table": "sensors",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "profiles_pkey",
+      "table": "profiles",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "stations_pkey",
+      "table": "stations",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "groups_pkey",
+      "table": "groups",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "measurement_units_pkey",
+      "table": "measurement_units",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "readings_pkey",
+      "table": "readings",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "threshold_rules_pkey",
+      "table": "threshold_rules",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "alerts_pkey",
+      "table": "alerts",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "profile_stations_pkey",
+      "table": "profile_stations",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "profile_stations_profile_id_station_id_key",
+      "table": "profile_stations",
+      "column": "profile_id",
+      "isUnique": true
+    },
+    {
+      "name": "profile_stations_profile_id_station_id_key",
+      "table": "profile_stations",
+      "column": "station_id",
+      "isUnique": true
+    },
+    {
+      "name": "subscription_codes_pkey",
+      "table": "subscription_codes",
+      "column": "id",
+      "isUnique": true
+    },
+    {
+      "name": "subscription_codes_code_key",
+      "table": "subscription_codes",
+      "column": "code",
+      "isUnique": true
+    }
+  ],
+  "triggers": [
+    {
+      "name": "validate_sensor_station_group_trigger",
+      "table": "sensors",
+      "type": "ROW",
+      "timing": "BEFORE",
+      "definition": "CREATE TRIGGER validate_sensor_station_group_trigger BEFORE INSERT OR UPDATE ON public.sensors FOR EACH ROW EXECUTE FUNCTION validate_sensor_station_group()"
+    },
+    {
+      "name": "update_threshold_rules_updated_at",
+      "table": "threshold_rules",
+      "type": "ROW",
+      "timing": "BEFORE",
+      "definition": "CREATE TRIGGER update_threshold_rules_updated_at BEFORE UPDATE ON public.threshold_rules FOR EACH ROW EXECUTE FUNCTION update_updated_at_column()"
+    },
+    {
+      "name": "check_rules_on_new_reading",
+      "table": "readings",
+      "type": "STATEMENT",
+      "timing": "AFTER",
+      "definition": "CREATE TRIGGER check_rules_on_new_reading AFTER INSERT ON public.readings FOR EACH STATEMENT EXECUTE FUNCTION process_sensor_reading()"
+    },
+    {
+      "name": "update_profile_stations_updated_at",
+      "table": "profile_stations",
+      "type": "ROW",
+      "timing": "BEFORE",
+      "definition": "CREATE TRIGGER update_profile_stations_updated_at BEFORE UPDATE ON public.profile_stations FOR EACH ROW EXECUTE FUNCTION update_updated_at_column()"
+    }
+  ],
+  "views": [],
+  "extensions": [
+    {
+      "name": "plpgsql",
+      "version": "1.0",
+      "description": "PL/pgSQL procedural language"
+    },
+    {
+      "name": "pg_stat_statements",
+      "version": "1.10",
+      "description": "track planning and execution statistics of all SQL statements executed"
+    },
+    {
+      "name": "uuid-ossp",
+      "version": "1.1",
+      "description": "generate universally unique identifiers (UUIDs)"
+    },
+    {
+      "name": "pgcrypto",
+      "version": "1.3",
+      "description": "cryptographic functions"
+    },
+    {
+      "name": "pgjwt",
+      "version": "0.2.0",
+      "description": "JSON Web Token API for Postgresql"
+    },
+    {
+      "name": "pgsodium",
+      "version": "3.1.8",
+      "description": "Pgsodium is a modern cryptography library for Postgres."
+    },
+    {
+      "name": "supabase_vault",
+      "version": "0.2.8",
+      "description": "Supabase Vault Extension"
+    },
+    {
+      "name": "pg_graphql",
+      "version": "1.5.9",
+      "description": "pg_graphql: GraphQL support"
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2025-01-24T19:02:01.517Z",
+    "supabaseVersion": "2.x",
+    "databaseVersion": "PostgreSQL 15.x",
+    "environment": "development"
+  },
+  "lastUpdated": "2025-01-24T19:02:01.517Z"
+}
