@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
+import { BLEScanner } from "./components/ble-scanner";
 
 // Definimos la interfaz para los datos de groups
 interface Group {
@@ -204,6 +205,7 @@ export default function App() {
           )}
         </ScrollView>
       )}
+      <BLEScanner />
     </View>
   );
 }

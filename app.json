@@ -1,5 +1,6 @@
 {
   "expo": {
+    "sdkVersion": "52.0.0",
     "name": "DemSync",
     "slug": "DemSync",
     "version": "1.0.0",
@@ -8,11 +9,13 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -22,12 +25,21 @@
         "backgroundColor": "#ffffff"
       },
       "softwareKeyboardLayoutMode": "pan",
-      "windowSoftInputMode": "adjustResize"
+      "windowSoftInputMode": "adjustResize",
+      "permissions": [
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_CONNECT",
+        "BLUETOOTH_ADVERTISE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "package": "com.viefmoon.DemSync"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "expo-dev-client",
       "expo-secure-store",
       [
         "expo-screen-orientation",
@@ -35,6 +47,11 @@
           "initialOrientation": "DEFAULT"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "fff3d341-4fd0-482c-8b99-6d6551406154"
+      }
+    }
   }
 }
