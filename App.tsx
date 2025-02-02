@@ -11,10 +11,11 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  Button,
 } from "react-native";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
-import { BLEScanner } from "./components/ble-scanner";
+import { BleConfigScreen } from "./components/ble-config/ble-config";
 
 // Definimos la interfaz para los datos de groups
 interface Group {
@@ -32,6 +33,7 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [session, setSession] = useState<any>(null);
+  const [showBleConfig, setShowBleConfig] = useState(false);
 
   useEffect(() => {
     checkSession();
@@ -164,6 +166,24 @@ export default function App() {
     );
   }
 
+  if (showBleConfig) {
+    return (
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <View style={styles.header}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => setShowBleConfig(false)}
+          >
+            <Text style={styles.backButtonText}>Volver</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerText}>Configuración BLE</Text>
+        </View>
+        <BleConfigScreen />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -171,9 +191,20 @@ export default function App() {
         <Text style={styles.headerText}>
           Bienvenido, {session?.user?.email}
         </Text>
-        <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
-          <Text style={styles.signOutButtonText}>Cerrar Sesión</Text>
-        </TouchableOpacity>
+        <View style={styles.headerButtons}>
+          <TouchableOpacity
+            style={styles.bleConfigButton}
+            onPress={() => setShowBleConfig(true)}
+          >
+            <Text style={styles.bleConfigButtonText}>Configuración BLE</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.signOutButton}
+            onPress={handleSignOut}
+          >
+            <Text style={styles.signOutButtonText}>Cerrar Sesión</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       {loading ? (
         <Text style={styles.loadingText}>Cargando...</Text>
@@ -205,7 +236,6 @@ export default function App() {
           )}
         </ScrollView>
       )}
-      <BLEScanner />
     </View>
   );
 }
@@ -263,6 +293,19 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 16,
     fontWeight: "500",
+  },
+  headerButtons: {
+    flexDirection: "row",
+  },
+  bleConfigButton: {
+    backgroundColor: "#4B5563",
+    padding: 8,
+    marginRight: 8,
+    borderRadius: 4,
+  },
+  bleConfigButtonText: {
+    color: "#fff",
+    fontWeight: "600",
   },
   signOutButton: {
     padding: 8,
@@ -331,5 +374,13 @@ const styles = StyleSheet.create({
   groupDetail: {
     fontSize: 14,
     color: "#666",
+  },
+  backButton: {
+    padding: 8,
+    marginRight: 8,
+  },
+  backButtonText: {
+    color: "#0284c7",
+    fontSize: 16,
   },
 });
